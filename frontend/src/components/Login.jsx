@@ -6,11 +6,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
   async function handlesubmit(e) {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:8000/users/signin", {
+      const res = await fetch(`${BASE_URL}/users/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -34,7 +36,6 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#0f172a] px-4">
-      {/* Stylish Taskify heading */}
       <h1 className="text-5xl font-extrabold mb-10 text-gradient bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500">
         Taskify
       </h1>
@@ -73,6 +74,7 @@ const Login = () => {
 }
 
 export default Login;
+
 
 
 

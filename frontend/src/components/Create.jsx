@@ -6,22 +6,29 @@ const Create = () => {
   const [description, setdescription] = useState("");
   const [deadline, setdeadline] = useState("");
 
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
   async function handlecreate(e) {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:8000/tasks/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ title, description, deadline })
-    });
+    try {
+      const res = await fetch(`${BASE_URL}/tasks/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ title, description, deadline })
+      });
 
-    const data = await res.json();
-    alert(data.message);
-    console.log(data);
+      const data = await res.json();
+      alert(data.message);
+      console.log(data);
+    } catch (error) {
+      console.error("Task creation failed:", error);
+      alert("Failed to create task.");
+    }
   }
 
   return (
@@ -68,5 +75,6 @@ const Create = () => {
 };
 
 export default Create;
+
 
 

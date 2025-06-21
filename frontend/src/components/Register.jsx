@@ -8,11 +8,13 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8000/users/signup", {
+      const response = await fetch(`${BASE_URL}/users/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -35,7 +37,6 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#0f172a] px-4">
-      {/* Stylish Taskify heading */}
       <h1 className="text-5xl font-extrabold mb-10 text-gradient bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500">
         Taskify
       </h1>
@@ -88,6 +89,7 @@ const Register = () => {
 };
 
 export default Register;
+
 
 
 

@@ -11,9 +11,11 @@ const AllTask = () => {
   const [editDescription, setEditDescription] = useState('');
   const [editDeadline, setEditDeadline] = useState('');
 
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
   async function handleUpdate(taskId, title, description, deadline) {
     try {
-      const res = await fetch(`http://localhost:8000/tasks/update/${taskId}`, {
+      const res = await fetch(`${BASE_URL}/tasks/update/${taskId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +42,7 @@ const AllTask = () => {
 
   async function handleDelete(taskId) {
     try {
-      const res = await fetch(`http://localhost:8000/tasks/delete/${taskId}`, {
+      const res = await fetch(`${BASE_URL}/tasks/delete/${taskId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -61,8 +63,8 @@ const AllTask = () => {
   async function fetchTasks() {
     try {
       const url = searchTitle.trim()
-        ? `http://localhost:8000/tasks/search?title=${encodeURIComponent(searchTitle.trim())}`
-        : "http://localhost:8000/tasks/mytasks";
+        ? `${BASE_URL}/tasks/search?title=${encodeURIComponent(searchTitle.trim())}`
+        : `${BASE_URL}/tasks/mytasks`;
 
       const res = await fetch(url, {
         method: 'GET',
@@ -197,6 +199,7 @@ const AllTask = () => {
 };
 
 export default AllTask;
+
 
 
 
