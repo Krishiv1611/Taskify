@@ -8,7 +8,8 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  // Hardcoded backend URL
+  const BASE_URL = "http://localhost:8000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,6 +90,7 @@ const Register = () => {
 };
 
 export default Register;
+
 
 
 

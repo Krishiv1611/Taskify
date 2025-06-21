@@ -6,7 +6,8 @@ const Create = () => {
   const [description, setdescription] = useState("");
   const [deadline, setdeadline] = useState("");
 
-  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  // Hardcoded backend URL
+  const BASE_URL = "http://localhost:8000";
 
   async function handlecreate(e) {
     e.preventDefault();
@@ -75,6 +76,7 @@ const Create = () => {
 };
 
 export default Create;
+
 
 
 

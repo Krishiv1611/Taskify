@@ -6,7 +6,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  // Hardcoded backend URL
+  const BASE_URL = "http://localhost:8000";
 
   async function handlesubmit(e) {
     e.preventDefault();
@@ -74,6 +75,7 @@ const Login = () => {
 }
 
 export default Login;
+
 
 
 

@@ -11,7 +11,8 @@ const AllTask = () => {
   const [editDescription, setEditDescription] = useState('');
   const [editDeadline, setEditDeadline] = useState('');
 
-  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  // Fixed backend URL to localhost:8000
+  const BASE_URL = "http://localhost:8000";
 
   async function handleUpdate(taskId, title, description, deadline) {
     try {
@@ -199,6 +200,7 @@ const AllTask = () => {
 };
 
 export default AllTask;
+
 
 
 
